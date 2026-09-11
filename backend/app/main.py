@@ -1,5 +1,18 @@
 from fastapi import FastAPI
 
+from app.database import Base, engine
+from app.models import (
+    Candidate,
+    Skill,
+    Experience,
+    Project,
+    Education,
+)
+
+
+Base.metadata.create_all(bind=engine)
+
+
 app = FastAPI(
     title="AI Career Agent",
     description="AI-powered job matching and career optimization platform",
