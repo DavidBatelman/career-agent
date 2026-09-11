@@ -8,6 +8,7 @@ from app.models import (
     Project,
     Education,
 )
+from app.api.routes.candidate import router as candidate_router
 
 
 Base.metadata.create_all(bind=engine)
@@ -18,6 +19,9 @@ app = FastAPI(
     description="AI-powered job matching and career optimization platform",
     version="0.1.0",
 )
+
+
+app.include_router(candidate_router)
 
 
 @app.get("/")
